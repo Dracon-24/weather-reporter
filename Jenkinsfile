@@ -8,10 +8,11 @@ pipeline {
 
   stages {
     stage('Checkout') {
-      steps {
-        git 'git@github.com:Dracon-24/weather-reporter.git'
-      }
+    steps {
+        git credentialsId: 'github-ssh-new', url: 'git@github.com:Dracon-24/weather-reporter.git'
     }
+}
+
 
     stage('Install Dependencies') {
       steps {
