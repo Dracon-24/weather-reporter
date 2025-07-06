@@ -1,0 +1,6 @@
+FROM node:18
+WORKDIR /app
+COPY node-service /app
+RUN npm install
+EXPOSE 4000
+CMD ["node", "index.js"]

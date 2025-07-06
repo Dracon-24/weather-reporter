@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  java-service:
+    build:
+      context: .
+      dockerfile: Dockerfile-java
+    container_name: java-weather-service
+    ports:
+      - "5000:8080"  # Note: If Java runs on another port, we’ll update later
+    restart: always
+
+  node-service:
+    build:
+      context: .
+      dockerfile: Dockerfile-node
+    container_name: node-weather-api
+    ports:
+      - "4000:4000"
+    depends_on:
+      - java-service
+    restart: always
